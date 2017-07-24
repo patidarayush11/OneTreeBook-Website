@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>Register</title>
+<script type="text/javascript">
+function checkPass()
+{
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    var message = document.getElementById('confirmMessage');
+
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+
+		    if(pass1.value == pass2.value){
+
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Passwords Match!"
+    }else{
+
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Passwords Do Not Match!"
+    }
+}
+
+function checkEmail() {
+
+    var email = document.getElementById('txtEmail');
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!filter.test(email.value)) {
+    alert('Please provide a valid email address');
+    email.focus;
+    return false;
+ }
+}
+</script>
+
+
+<style>
+.reg{
+	border: 1px solid black;
+  background:lightgrey;
+  width:200px;
+  position: absolute;
+  top: 150px; left: 580px;
+
+}
+body{
+	background-image : url("images/register.jpg");
+	background-repeat: no-repeat;
+    background-position: right top;
+	color:black;
+}
+
+.footer{
+            background-color: #679BB7;
+			color: #ffffff;
+			background: url(../images/footer_img.jpg);
+            padding: 10px 0;
+        }
+.footer p{
+            text-align: center;
+            margin: 5px;
+        }
+
+
+
+</style>
+</head>
+<body>
+<h1><center>WELCOME TO SRM UNIVERSITY LIBRARY</center></h1>
+
+<div class="reg" align="center">
+
+<form name="myform" method="POST" action="login.php">
+<h3><center>Register Here</center></h3>
+<label for="firstname">FirstName</label>
+      <input type="text" name="firstname" required><br />
+
+      <label for="lastname">LastName</label>
+      <input type="text" name="lastname" required><br />
+
+      <label for="email">Email</label><br>
+      <input type="text" name="email" id="txtEmail"><br>
+
+	  <label for="password">Password</label>
+		<input type="password" name="password" id="pass1" required><br>
+
+		<label for="password">Confirm Password</label>
+		<input type="password" name="cpassword" id="pass2" onkeyup="checkPass(); return false;">
+    <span id="confirmMessage" class="confirmMessage"></span><br>
+
+		<label for="password">Date of Birth</label><br>
+		<input type="date" name="dob" value="2017-01-13"><br><br>
+
+		<label for="gender">Gender</label>
+      <input type="radio" name="sex" value="male"> Male
+      <input type="radio" name="sex" value="female"> Female<br><br>
+
+	  <label for="department">Department</label>
+	  <select name="department">
+    <option value="CSE">CSE</option>
+    <option value="IT">IT</option>
+    </select><br><br>
+      <input type="submit" value="send" onclick="checkEmail"> <input type="reset">
+	  </form>
+
+
+</div>
+</body>
+</html>
